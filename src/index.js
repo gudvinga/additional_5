@@ -6,8 +6,7 @@ module.exports = function check(str, bracketsConfig) {
         if(findOpen(strArr[i])) {
           steck.push(strArr[i]);
           if (findPare(strArr[i], 2)) {
-            steck.pop();
-            steck.pop();
+            steck.splice(-2,2);
           }
         }
         else {
