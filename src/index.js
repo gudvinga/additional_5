@@ -41,4 +41,3 @@ module.exports = function check(str, bracketsConfig) {
 if (steck.length == 0) return true;
 else return false;
 }
-// console.log(check('[(])',[['(', ')'], ['[', ']']]));
