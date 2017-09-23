@@ -4,11 +4,16 @@ module.exports = function check(str, bracketsConfig) {
 
       for (var i = 0; i < strArr.length; i++) {
         if(findOpen(strArr[i])) {
-          steck.push(strArr[i]); 
+          steck.push(strArr[i]);
+          console.log('steck = ' + steck);
+          if (findPare(strArr[i], 2)) {
+            steck.pop();
+            steck.pop();
+          }
         }
-
-        if(!findOpen(strArr[i])) {
-          if(findPare(strArr[i])) steck.pop();
+        else {
+          console.log('steck back = ' + steck);
+          if(findPare(strArr[i], 1)) steck.pop();
           else return false;
         }
         
@@ -23,15 +28,17 @@ module.exports = function check(str, bracketsConfig) {
     }  
 
     //find pare
-    function findPare(curentBracket){
-      var arrPare = [steck[steck.length -1],curentBracket];  
+    function findPare(curentBracket, j){
+      var arrPare = [steck[steck.length - j],curentBracket];  
+      console.log('ArrPare' + arrPare);
+      console.log('steck[steck.lengt - j' + steck[steck.length -j] + ' j = ' + j);
       for (var i = 0; i < bracketsConfig.length; i++) {
         if(arrPare.join() == bracketsConfig[i].join()) return true;
       }
       return false;
     }
 
-  console.log(steck); 
-
 if (steck.length == 0) return true;
+else return false;
 }
+// console.log(check('[(])',[['(', ')'], ['[', ']']]));
